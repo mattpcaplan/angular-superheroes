@@ -1,0 +1,15 @@
+.marvel {
+  background-color: lightblue;
+}
+
+.dc {
+  background-color: rgb(255,102,102);
+}
+
+.independent {
+  background-color: teal;
+}
+
+.picture img {
+  width: 300px;
+}

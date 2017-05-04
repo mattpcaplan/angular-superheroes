@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app='superheroApp'>
 <head>
   <meta charset="UTF-8">
   <title>Superhero Phone Book</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="app.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-  <script src="app.js"></script>
+<body ng-controller="SuperHeroController as vm">
+  <h1> Superheroes:</h1>
+  <br>
+  <div>
+  Search Superheroes:
+  <input type="text" ng-model="vm.superheroSearch">
+</div>
+<br>
+<div>
+  <p>*Marvel characters will highlight in blue.  DC characters in red.  Independent characters in teal.* </p>
+</div>
+<br>
+  <div ng-repeat='superhero in vm.superhero | filter: vm.superheroSearch' ng-class='superhero.group.toLowerCase()'>
+    <a> {{ $index + 1 }}. {{ superhero.name }} -- {{ superhero.phone_number }} </a>
+    <img ng-src='{{superhero.img}}' ng-show="vm.viewImage[$index]"/>
+    <button ng-click="vm.viewImage[$index] = !vm.viewImage[$index]">View Pic</button>
+  </div>
+  <br>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" ng-model="vm.newSuperHero.name">
+  </div>
+  <br>
+  <div>
+    <label for="phone_number">Phone Number:</label>
+    <input type="text" ng-model="vm.newSuperHero.phone_number">
+  </div>
+  <br>
+  <div>
+  <!-- <select>
+  <option ng-model="group.marvel"=>Marvel</option>
+  <option ng-model=>DC</option>
+  <option ng-model=>Independent</option>
+</select> -->
+</div>
+<br>
+    <button ng-click="vm.addSuperHero()">Add Superhero</button>
 </body>
 </html>
+
+<!-- class = "{{ hero.group | lowercase}}" -->
