@@ -36,11 +36,8 @@
   </div>
   <br>
   <div>
-  <!-- <select>
-  <option ng-model="group.marvel"=>Marvel</option>
-  <option ng-model=>DC</option>
-  <option ng-model=>Independent</option>
-</select> -->
+    <label for="group">Association(DC? Marvel? Independent?):</label>
+    <input type="text" ng-model="vm.newSuperHero.group">
 </div>
 <br>
     <button ng-click="vm.addSuperHero()">Add Superhero</button>
